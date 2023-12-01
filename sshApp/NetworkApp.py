@@ -18,4 +18,5 @@ except KeyboardInterrupt:
     print("\nProgram aborted by user!\n")
     sys.exit()
 
+#In here we create threads for each ip that will create the simultaneous ssh connection
 create_threads(ip_list, ssh_connection)
