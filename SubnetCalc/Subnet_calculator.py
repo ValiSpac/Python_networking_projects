@@ -32,7 +32,7 @@ def subnet_calc():
 
     #Format the mask binary
     mask_octet_binary = []
-    for octet in mask_octests:
+    for octet in mask_octets:
         binary_octet = bin(int(octet)).lstrip('0b')
         mask_octet_binary.append(binary_octet.zfill(8))
     binary_mask = "".join(mask_octet_binary)
@@ -44,11 +44,17 @@ def subnet_calc():
     no_of_hosts = abs(2 ** no_of_zeros - 2)
     print(f"host = {no_of_hosts}")
 
+    #Get wildcard mask from octets
     wildcard_octets = []
-    for octet in mask_octests:
+    for octet in mask_octets:
         wild_octet = 255 - int(octet)
         wildcard_octets.append(str(wild_octet))
 
     wildcard_mask = '.'.join(wildcard_octets)
     print(wildcard_mask)
 
+    ip_octets_binary = []
+    for octet in ip_octets:
+        binary_octet = bin(int(octet)).lstrip('0b')
+
+subnet_calc()
