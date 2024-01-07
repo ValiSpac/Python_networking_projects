@@ -20,7 +20,7 @@ def subnet_calc():
     #Checking for subnet mask
         masks = [255, 254, 252, 248, 240, 224, 192, 128, 0]
         while True:
-            mask = input("Enter the subnet mask: ")
+            mask = input("Enter the subnet mask(octet format): ")
             mask_octets = mask.split('.')
             if ((len(mask_octets) == 4) and (int(mask_octets[0]) == 255) and
                 (int(mask_octets[1]) in masks) and (int(mask_octets[2]) in masks)
@@ -90,7 +90,7 @@ def subnet_calc():
             bst_ip_address.append(str(int(each_octet, 2)))
 
         broadcast_address = ".".join(bst_ip_address)
-    
+
         print("\n")
         print("Network address is: %s" % network_address)
         print("Broadcast address is: %s" % broadcast_address)
@@ -112,7 +112,7 @@ def subnet_calc():
                                 #Add identical octets to the generated_ip list
                                 generate_ip.append(oct_bst)
                             else:
-                                #Generate random number(s) from within octet intervals 
+                                #Generate random number(s) from within octet intervals
                                 #and append to the list
                                 generate_ip.append(str(random.randint(int(oct_net), int(oct_bst))))
                 #IP address generated from the subnet pool
