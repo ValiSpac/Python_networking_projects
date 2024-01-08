@@ -3,6 +3,7 @@ import os.path
 import time
 import sys
 import re
+import datetime
 
 #Check for the user file path
 user_file = input("\n Enter the user file path: ")
@@ -57,15 +58,15 @@ def ssh_connection(ip):
         if re.search(b'% Invalid input', router_output):
             print(f"There was at least one IOS syntax error for {ip}, check the command line file")
         else:
-            print(f"Done for device[]: {ip}")
+            print(f"Done for device[]: {ip} \n")
         #Searching for the cpu pattern after running the command "show processes top once"
-        cpu = re.search(b"%Cpu\(s\):(\s)+(.+?)+(\s)us,", router_output)
+        cpu = re.search(b"%Cpu\(s\):(\s)+(.+?)(\s)* us,", router_output)
         #Extracting the second group from our cpu utilization output and decoding the byte output in UTF-8 format
         utilization = cpu.group(2).decode("utf-8")
         #Open and append the cpu utilization in a target file
-        with open("cpu.txt", "a") as f:
+        with open("\cpu.txt", "a") as f:
             f.write(utilization + "\n")
-        session.close()
+        # session.close()
 
     except paramiko.AuthenticationException:
         print("Invalid username or password!(Please check the username and password for the device configuration)")

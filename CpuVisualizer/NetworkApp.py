@@ -10,9 +10,10 @@ ip_list = ip_file_valid()
 
 try:
     ip_addr_valid(ip_list)
-except:
+except KeyboardInterrupt:
     print("\nProgram aborted by user!\n")
     sys.exit()
+
 try:
     ip_reach(ip_list)
 except KeyboardInterrupt:
