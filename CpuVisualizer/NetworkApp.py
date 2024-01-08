@@ -5,9 +5,13 @@ from ssh_connection import ssh_connection
 from create_threads import create_threads
 import sys
 import time
+import os
 
 ip_list = ip_file_valid()
 
+# if os.path.exists ("/cpu.txt"):
+#     cpu_information = open("cpu.txt", 'w')
+#     cpu_information.close()
 try:
     ip_addr_valid(ip_list)
 except KeyboardInterrupt:

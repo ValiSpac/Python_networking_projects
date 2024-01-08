@@ -66,7 +66,9 @@ def ssh_connection(ip):
         #Open and append the cpu utilization in a target file
         with open("cpu.txt", "a") as f:
             f.write(utilization + "\n")
-        # session.close()
+        session.close()
+        # with open("graph.py") as f:
+        #     exec(f.read())
 
     except paramiko.AuthenticationException:
         print("Invalid username or password!(Please check the username and password for the device configuration)")
