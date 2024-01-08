@@ -64,7 +64,7 @@ def ssh_connection(ip):
         #Extracting the second group from our cpu utilization output and decoding the byte output in UTF-8 format
         utilization = cpu.group(2).decode("utf-8")
         #Open and append the cpu utilization in a target file
-        with open("\cpu.txt", "a") as f:
+        with open("cpu.txt", "a") as f:
             f.write(utilization + "\n")
         # session.close()
 

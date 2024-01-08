@@ -9,7 +9,7 @@ subplot = figure.add_subplot(1, 1, 1)
 
 # Creating the function that reads the data from cpu.txt and feeds it to out subplot
 def animation_function(i):
-    cpu_data = open("\cpu.txt").readlines()
+    cpu_data = open("cpu.txt").readlines()
 
     x = []
 
