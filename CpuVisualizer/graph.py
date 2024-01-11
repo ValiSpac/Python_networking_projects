@@ -1,27 +1,30 @@
 import matplotlib.pyplot as pyp
 import matplotlib.animation as animation
 
-# Creating a new figure
-figure = pyp.figure()
+# creating the function that reads the data from cpu.txt and feeds it to out subplot
+def animation_function(frame, ip_list, subplot):
+    cpu_data = {}
+    x = {}
+    for ip in ip_list:
+        cpu_data[ip] = open(f"{ip}_cpu").readlines()
+        x[ip] = []
 
-# Creating a single subplot in our figure
-subplot = figure.add_subplot(1, 1, 1)
-
-# Creating the function that reads the data from cpu.txt and feeds it to out subplot
-def animation_function(i):
-    cpu_data = open("cpu.txt").readlines()
-
-    x = []
-
-    for each_value in cpu_data:
-        if (len(each_value)) > 1:
-            x.append(float(each_value))
-
-# Clearing/refreshing the figure to avoid unnecessary overwriting for each new poll (every 10 seconds)
+    for ip in ip_list:
+        for each_value in cpu_data[ip]:
+            if (len(each_value)) > 1:
+                x[ip].append(float(each_value))
+    # clearing/refreshing the figure to avoid unnecessary overwriting for each new poll (every 5 seconds)
     subplot.clear()
-# Plotting the values in the list
-    subplot.plot(x)
+    # plotting the values in the list
+    for ip in ip_list:
+        subplot.plot(x[ip], label=ip)
 
-graph_animation = animation.FuncAnimation(figure, animation_function, interval = 5000)
+    subplot.legend()
 
-pyp.show()
+def show_graph(ip_list):
+    # creating a new figure and asigning multiple subplots
+    figure , subplot = pyp.subplots()
+
+    graph_animation = animation.FuncAnimation(figure, animation_function, fargs=(ip_list, subplot,), interval = 5000)
+
+    pyp.show()

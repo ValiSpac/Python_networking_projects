@@ -1,9 +1,9 @@
 import os.path
 import sys
 
-#Check for ip_file path 
+#check for ip_file path
 def ip_file_valid():
-    ip_file = input("\nGive path to the ip file: ")
+    ip_file = input("\n Give path to the ip file: ")
     if os.path.isfile(ip_file) == True:
         print("\nIP path is valid!\n")
     else:
