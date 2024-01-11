@@ -4,7 +4,7 @@ import time
 import sys
 import re
 
-#Check for the user file path
+#check for the user file path
 user_file = input("\n Enter the user file path: ")
 if os.path.isfile(user_file) == True:
     print("\nUser path valid!\n")
@@ -12,7 +12,7 @@ else:
     print("\nUser path is not valid!\n")
     sys.exit()
 
-#Check for the command line file path
+#check for the command line file path
 cmd_file = input("\n Enter the command line file path: ")
 if os.path.isfile(cmd_file) == True:
     print("\nCommand line file path valid!\n")
