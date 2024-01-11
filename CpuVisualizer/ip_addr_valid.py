@@ -10,7 +10,6 @@ def ip_addr_valid(iplist):
             int(octet_list[1]) != 254 and (0 <= int(octet_list[1]) <= 255)
             and 0 <= int(octet_list[2]) <= 255 and 0 <= int(octet_list[3])
             <= 255):
-            print(ip)
             continue
         else:
             print(f"There is an invalid ip address in the file: {ip}\n")
