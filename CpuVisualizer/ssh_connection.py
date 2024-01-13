@@ -65,6 +65,7 @@ def ssh_connection(ip):
         #open and append the cpu utilization in a target file
         with open(f"{ip}_cpu", "a") as f:
             f.write(utilization + "\n")
+        #close session so you don't create new connection for every thread
         session.close()
 
     except paramiko.AuthenticationException:
