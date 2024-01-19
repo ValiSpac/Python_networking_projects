@@ -1,4 +1,3 @@
-import logging
 from datetime import datetime
 import subprocess
 import sys
@@ -10,7 +9,7 @@ except ImportError:
     print("Scapy is not installed on your system($:python3 pip install scapy)")
     sys.exit()
 
-def packet_log(packet):
+
 
 if __name__ == "__main__":
     net_iface = input("Please enter the interface on wich to run the sniffer(ex. 'enp0s8'): ")
@@ -81,7 +80,14 @@ if __name__ == "__main__":
             sniffer_log = open(file_name, "a")
             break
 
+    #function wich will print the data in the log file
+    def packet_log(packet):
+        global packet_count
+        now = datetime.now()
+        print(f"\n{now}: Packet number {packet_count}\n")
+
     print("\nStarting the capture.....\n")
+    packet_count = 0
     try:
         if protocol_filter == '0':
             sniff(iface = net_iface, count = int(pkt_to_sniff), timeout = int(time_to_sniff). prn = packet_log)
@@ -91,3 +97,4 @@ if __name__ == "__main__":
         print(f"An unexpected error occurred: {e}\n")
         sys.exit()
     print("\nFINISHED!\nBYE!")
+
