@@ -1,6 +1,0 @@
-enable
-terminal length 0
-configure terminal
-
-show ip int brief
-show ntp status
