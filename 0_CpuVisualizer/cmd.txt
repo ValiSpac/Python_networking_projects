@@ -1,0 +1,5 @@
+enable
+terminal length 0
+configure terminal
+
+show processes top once
